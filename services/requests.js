@@ -43,7 +43,12 @@ const addActivityToDB = (req, res) => {
     .then(result => res.json(result))
     .catch(err => console.log(err));
 }
-
+const deleteAllActivites = (req, res) => {
+  const removeString = 'DELETE FROM "my_activities"'; // delete all items in the 'my_activities' table
+  pool.query(removeString) // send query delete all items in the 'my_activities' table
+    .then(res.send('All activities cleared!')) // send confirmation to the browser
+    .catch(err => console.log(err));  
+}
 
 
 module.exports = { getSingleActivity, addActivityToDB, getAllActivities, deleteAllActivites }
